@@ -46,12 +46,12 @@ app.layout = html.Div(children=[
     html.Div([
         # sections have similar code but unique slider id
         # header
-        html.H6('Enter Your Description of Requested Medicinal Effects'),
+        html.H6('Description of Requested Medicinal Effects'),
 
         dcc.Textarea(
             id='textarea',
-            placeholder='Please describe your treatment needs here & wait for new results...',
-            value='',
+            placeholder='Text placeholder text...',
+            value='Please describe your treatment needs & wait for new results',
             style={'width': '100%'}
         ),
         #added linebreak so no overlap on screen
@@ -62,69 +62,7 @@ app.layout = html.Div(children=[
     ]),
 
     html.Br(),
-
-    html.Br(),
     html.A('Inspect and Get The Open Source Code On Github', href='https://github.com/lineality/medflask1v1'),
-    html.H6('''For best results, please use terms like the following:
-(Effect Terms)
-Aroused
-Creative
-Energetic
-Euphoric
-Focused
-Giggly
-Happy
-Hungry
-Relaxed
-Sleepy
-Talkative
-Tingly
-Uplifted
-
-(Flavor Terms)
-Ammonia
-Apple
-Apricot
-Berry
-Blue
-Blueberry
-Citrus
-Cheese
-Chemical
-Chestnut
-Diesel
-Earthy
-Flowery
-Fruit
-Grape
-Grapefruit
-Honey
-Lavender
-Lemon
-Mango
-Menthol
-Mint
-Minty
-Nutty
-Orange
-Peach
-Pepper
-Pine
-Pineapple
-Pungent
-Sage
-Skunk
-Spicy/Herbal
-Strawberry
-Sweet
-Tea
-Tobacco
-Tree
-Tropical
-Vanilla
-Violet
-Woody
-'''),
 ])
 ############ Interactive Callbacks
 # call back function, functions with decorators(specify input and output)
@@ -215,7 +153,7 @@ def display_results(user_input):
     #med model
     #predict(user_input)
 
-    return f'The predicted species/cultivars/strains are"{predict(user_input)}"'
+    return f'The predicted species/cultivar/strain is"{predict(user_input)}"'
 
 ############ Execute the app
 if __name__ == '__main__':
