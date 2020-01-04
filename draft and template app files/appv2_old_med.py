@@ -46,7 +46,7 @@ app.layout = html.Div(children=[
     html.Div([
         # sections have similar code but unique slider id
         # header
-        html.H6('Enter Description of Requested Medicinal Effects Below, and see prediction from over 2,300 cultivars.'),
+        html.H6('Enter Your Description of Requested Medicinal Effects'),
 
         dcc.Textarea(
             id='textarea',
