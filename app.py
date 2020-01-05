@@ -127,9 +127,12 @@ Violet
 Woody
 '''),
 html.Br(),
-html.H6('For best predictions, use this form, with effects listed before flavors. This will return a 100% accurate match to your needs where available'),
+html.H6('For best predictions, use the format of the example below, with effects listed before flavors. This will return a 100% accurate match to your needs where available'),
 html.Br(),
 html.H6('E.g. relaxed, aroused, creative, happy, energetic, flowery, violet, diesel'),
+html.Br(),
+html.H6('The prediction is made by calculating the Cosine Distance of the user text and the products https://reference.wolfram.com/language/ref/CosineDistance.html'),
+
 
 ])
 ############ Interactive Callbacks
