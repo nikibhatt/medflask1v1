@@ -15,7 +15,6 @@ import pickle
 import basilica
 import numpy as np
 import pandas as pd
-import re
 from scipy import spatial
 
 
@@ -202,16 +201,12 @@ def display_results(user_input):
 
 
         # Part 4
-        #output contains code for outputting score if desired
         output = df['Strain'].groupby(df['score']).value_counts().nlargest(5, keep='last')
         output_string = str(output)
-        #filters out the score
-        output_regex = re.sub(r'[^a-zA-Z ]', '', output_string)
-        output_string_clipped = output_regex[26:-28]
 
 
-        # Part 5: output
-        return output_string_clipped
+        # Part 5: the output
+        return output_string
 
     # user input
     #output_string = "text, Relaxed, Violet, Aroused, Creative, Happy, Energetic, Flowery, Diesel"
@@ -225,27 +220,3 @@ def display_results(user_input):
 ############ Execute the app
 if __name__ == '__main__':
     app.run_server()
-
-'''
-To update github:
-
-    git add .
-
-    git status
-
-    git commit -m 'Informative comment about what you did'
-
-    git push origin master
-'''
-
-'''
-To update heroku:
-
-    $ heroku login
-    $ heroku git:clone -a medicinal-cultivars
-    $ cd medicinal-cultivars
-
-    $ git add .
-    $ git commit -am "make it better"
-    $ git push heroku master
-'''
