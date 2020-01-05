@@ -126,6 +126,11 @@ Vanilla
 Violet
 Woody
 '''),
+html.Br(),
+html.H6('For best predictions, use this form, with effects listed before flavors. This will return a 100% accurate match to your needs where available'),
+html.Br(),
+html.H6('E.g. relaxed, aroused, creative, happy, energetic, flowery, violet, diesel'),
+
 ])
 ############ Interactive Callbacks
 # call back function, functions with decorators(specify input and output)
@@ -207,8 +212,8 @@ def display_results(user_input):
         output = df['Strain'].groupby(df['score']).value_counts().nlargest(6, keep='last')
         output_string = str(output)
         #filters out the score
-        output_regex = re.sub(r'[^a-zA-Z ]', '', output_string)
-        output_string_clipped = output_regex[39:-28]
+        output_regex = re.sub(r'[^a-zA-Z ^0-9 ^.]', '', output_string)
+        output_string_clipped = output_regex[50:-28]
 
 
         # Part 5: output
@@ -221,7 +226,7 @@ def display_results(user_input):
     #med model
     #predict(user_input)
 
-    return f'Your top five recommended/predicted species/cultivars/strains are "{predict(user_input)}"'
+    return f'Your top five recommended/predicted species/cultivars/strains with scores are "{predict(user_input)}"'
 
 ############ Execute the app
 if __name__ == '__main__':
