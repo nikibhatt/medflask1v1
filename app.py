@@ -202,12 +202,13 @@ def display_results(user_input):
 
 
         # Part 4
+        # note: ...strains are sometimes numbers...
         #output contains code for outputting score if desired
-        output = df['Strain'].groupby(df['score']).value_counts().nlargest(5, keep='last')
+        output = df['Strain'].groupby(df['score']).value_counts().nlargest(6, keep='last')
         output_string = str(output)
         #filters out the score
         output_regex = re.sub(r'[^a-zA-Z ]', '', output_string)
-        output_string_clipped = output_regex[26:-28]
+        output_string_clipped = output_regex[39:-28]
 
 
         # Part 5: output
@@ -227,24 +228,16 @@ if __name__ == '__main__':
     app.run_server()
 
 '''
-To update github:
-
-    git add .
-
-    git status
-
-    git commit -m 'Informative comment about what you did'
-
-    git push origin master
+To update github in terminal:
+    $ git add .
+    $ git status
+    $ git commit -m 'Informative comment about what you did'
+    $ git push origin master
 '''
 
 '''
-To update heroku:
-
+To update heroku in terminal:
     $ heroku login
-    $ heroku git:clone -a medicinal-cultivars
-    $ cd medicinal-cultivars
-
     $ git add .
     $ git commit -am "make it better"
     $ git push heroku master
