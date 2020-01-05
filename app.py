@@ -132,6 +132,9 @@ html.Br(),
 html.H6('E.g. relaxed, aroused, creative, happy, energetic, flowery, violet, diesel'),
 html.Br(),
 html.H6('The prediction is made by calculating the Cosine Distance of the user text and the products https://reference.wolfram.com/language/ref/CosineDistance.html'),
+html.Br(),
+html.H6('Note: some of the cultivar names are themselves numbers. E.g. "1024" '),
+
 
 
 ])
