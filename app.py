@@ -127,7 +127,7 @@ Violet
 Woody
 '''),
 html.Br(),
-html.H6('For best predictions, use the format of the example below, with effects listed before flavors. This will return a 100% accurate match to your needs where available'),
+html.H6('For best predictions, use the format of the example below, with effects listed before flavors. This will return a 100% accurate match to your preferences where available.'),
 html.Br(),
 html.H6('E.g. relaxed, aroused, creative, happy, energetic, flowery, violet, diesel'),
 html.Br(),
