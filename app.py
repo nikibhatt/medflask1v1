@@ -47,7 +47,7 @@ app.layout = html.Div(children=[
     html.Div([
         # sections have similar code but unique slider id
         # header
-        html.H6('Enter Description of Requested Medicinal Effects Below, and see prediction from over 2,300 cultivars.'),
+        html.H6('Enter a description of your preferences and requested medicinal effects below, and get recommendations from Over 2,300 cultivars.'),
 
         dcc.Textarea(
             id='textarea',
@@ -220,7 +220,7 @@ def display_results(user_input):
     #med model
     #predict(user_input)
 
-    return f'The predicted species/cultivars/strains are"{predict(user_input)}"'
+    return f'Your top five recommended/predicted species/cultivars/strains are "{predict(user_input)}"'
 
 ############ Execute the app
 if __name__ == '__main__':
