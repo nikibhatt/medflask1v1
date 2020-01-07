@@ -8,6 +8,7 @@ import plotly.graph_objs as go
 from dash.dependencies import Input, Output, State
 import pandas as pd
 import pickle
+from flask_sqlalchemy import SQLAlchemy
 
 # new imports
 #pip install basilica
@@ -38,6 +39,45 @@ app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen
 # server name is specified in proc file
 server = app.server
 app.title='knn'
+
+# Database creation
+app.server.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///MedCabinet.db"
+db = SQLAlchemy(app.server)
+
+class Effects_list(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    effect_terms = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<Effects_list {}>'.format(self.effect_terms)
+
+class Flavors_list(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    flavor_terms = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<Flavors_list {}>'.format(self.flavor_terms)
+
+list_of_effects = ['Aroused', 'Creative', 'Energetic', 'Euphoric',
+                   'Focused', 'Giggly', 'Happy', 'Hungry', 'Relaxed',
+                   'Sleepy', 'Talkative', 'Tingly', 'Uplifted']
+for x in range(len(list_of_effects)):
+    db.session.add(Effects_list(id=x,effect_terms=list_of_effects[x]))
+    db.session.commit()
+
+list_of_flavors = ['Ammonia', 'Apple','Apricot', 'Berry', 'Blue',
+                  'Blueberry', 'Citrus', 'Cheese', 'Chemical',
+                  'Chestnut', 'Diesel', 'Earthy', 'Flowery',
+                  'Fruit', 'Grape', 'Grapefruit', 'Honey',
+                  'Lavender', 'Lemon', 'Mango', 'Menthol',
+                  'Mint', 'Minty', 'Nutty', 'Orange', 'Peach',
+                  'Pepper','Pine','Pineapple','Pungent','Sage',
+                  'Skunk','Spicy/Herbal','Strawberry','Sweet',
+                  'Tea','Tobacco','Tree','Tropical','Vanilla',
+                  'Violet','Woody']
+for x in range(len(list_of_flavors)):
+    db.session.add(Flavors_list(id=x,flavor_terms=list_of_flavors[x]))
+    db.session.commit()
 
 ########### Set up the layout
 # generates HTML code
@@ -236,6 +276,7 @@ def display_results(user_input):
 
 ############ Execute the app
 if __name__ == '__main__':
+    db.create_all()
     app.run_server()
 
 '''
